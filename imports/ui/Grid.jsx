@@ -1,41 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { GridCollection } from '/imports/api/GridCollection';
 
-// railway = 0
-// sensor = 1
-// switch = 2
+// clear = 0
+// railway = 1
+// sensor = 2
+// switch = 3
 
 export const Grid = () => {
 	const tiles = useTracker(() => GridCollection.find().fetch());
+	const [drawingState, setDrawingState] = useState(0);
 
 	const tileClickHandler = (e) => {
 		e.preventDefault();
-		console.log(e.currentTarget.getElementsByClassName("x")[0].textContent);
-		console.log(e.currentTarget.getElementsByClassName("y")[0].textContent);
-
-		// console.log("drawing: " + this.state.drawState);
+		var xPos = e.currentTarget.getElementsByClassName("x")[0].textContent
+		var yPos = e.currentTarget.getElementsByClassName("y")[0].textContent
+		console.log("x: " + xPos + ", y: " + yPos);
+		console.log(drawingState);
 	}
 
 	const railwayClickHandler = (e) => {
 		console.log("Railway click handler");
-		// this.setState((state) => {
-		// 	drawState: 0
-		// });
+		setDrawingState(1);
 	}
 
 	const sensorClickHandler = (e) => {
 		console.log("Sensor click handler");
-		// this.setState((state) => {
-		// 	drawState: 1
-		// });
+		setDrawingState(2);
 	}
 
 	const switchClickHandler = (e) => {
 		console.log("Switch click handler");
-		// this.setState((state) => {
-		// 	drawState: 2
-		// });
+		setDrawingState(3);
 	}
 
 	const getPosition = (t) => {

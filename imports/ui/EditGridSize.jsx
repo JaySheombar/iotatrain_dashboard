@@ -4,16 +4,16 @@ import { GridCollection } from '/imports/api/GridCollection';
 
 const createGrid = (width, height) => {
 	emptyGrid();
-	
-	console.log("Creating grid: " + width + " by " + height);
-	grid = [];
+
 	for(i = 0; i <= height; i++) {
 		for(j = 0; j <= width; j++) {
-			var tile = {
+			GridCollection.insert({
 				xPos: j,
-				yPos: i
-			}
-			GridCollection.insert(tile);
+				yPos: i,
+				type: 0,
+				active: 0,
+				createdAt: new Date()
+			});
 		}
 	}
 }
