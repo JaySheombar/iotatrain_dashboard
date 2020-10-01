@@ -15,23 +15,31 @@ export const Grid = () => {
 		e.preventDefault();
 		var xPos = e.currentTarget.getElementsByClassName("x")[0].textContent
 		var yPos = e.currentTarget.getElementsByClassName("y")[0].textContent
-		console.log("x: " + xPos + ", y: " + yPos);
-		console.log(drawingState);
+		// console.log("x: " + xPos + ", y: " + yPos);
+		// console.log(drawingState);
+
+		GridCollection.update(e.currentTarget.id, { $set: {
+			type: drawingState,
+		}});
 	}
 
-	const railwayClickHandler = (e) => {
-		console.log("Railway click handler");
-		setDrawingState(1);
+	const legendClickHandler = (e) => {
+		setDrawingState(parseInt(e.currentTarget.id));
 	}
 
-	const sensorClickHandler = (e) => {
-		console.log("Sensor click handler");
-		setDrawingState(2);
-	}
-
-	const switchClickHandler = (e) => {
-		console.log("Switch click handler");
-		setDrawingState(3);
+	const styleFromDrawingState = (t) => {
+		switch(t) {
+			case 0:
+				return "grid-item clear-tile";
+			case 1:
+				return "grid-item railway-tile";
+			case 2:
+				return "grid-item sensor-tile";
+			case 3:
+				return "grid-item switch-tile";
+			default:
+				return "grid-item clear-tile";
+		}
 	}
 
 	const getPosition = (t) => {
@@ -48,7 +56,6 @@ export const Grid = () => {
 		}
 
 		return {
-			backgroundColor: "white",
 			left: xposition,
 			marginTop: yposition,
 		}
@@ -59,13 +66,14 @@ export const Grid = () => {
 			<h1>Grid</h1>
 			<div className="grid-container">
 				{tiles.map(tile => (
-					<button onClick={tileClickHandler} style={getPosition(tile)} key={tile._id} id={tile._id} className="grid-item"><span className="x">{tile.xPos}</span>, <span className="y">{tile.yPos}</span></button>
+					<button onClick={tileClickHandler} style={getPosition(tile)} key={tile._id} id={tile._id} className={ styleFromDrawingState (tile.type)}><span className="x">{tile.xPos}</span>, <span className="y">{tile.yPos}</span></button>
 				))}
 
 				<div className="legend-container">
-						<button onClick={railwayClickHandler}>Railway</button>
-						<button onClick={sensorClickHandler}>Sensor</button>
-						<button onClick={switchClickHandler}>Switch</button>
+						<button id="1" onClick={ legendClickHandler }>Railway</button>
+						<button id="2" onClick={ legendClickHandler }>Sensor</button>
+						<button id="3" onClick={ legendClickHandler }>Switch</button>
+						<button id="0" onClick={ legendClickHandler }>Clear</button>
 				</div>
 			</div>
 			

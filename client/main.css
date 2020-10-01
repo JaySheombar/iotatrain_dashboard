@@ -37,6 +37,22 @@ nav {
 	width: 400px;
 }
 
+.railway-tile {
+	background-color: lightblue;
+}
+
+.switch-tile {
+	background-color: darkblue;
+}
+
+.sensor-tile {
+	background-color: yellow;
+}
+
+.clear-tile {
+	background-color: white;
+}
+
 .x {
 	/* visibility: hidden; */
 }
