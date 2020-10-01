@@ -43,7 +43,6 @@ export const Grid = () => {
 	}
 
 	const getPosition = (t) => {
-
 		var xposition = "0px";
 		var yposition = "0px";
 
