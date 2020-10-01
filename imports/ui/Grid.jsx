@@ -64,17 +64,18 @@ export const Grid = () => {
 	return(
 		<div className="Grid">
 			<h1>Grid</h1>
+
+			<div className="legend-container">
+				<button id="1" className="legend-button" onClick={ legendClickHandler }>Railway</button>
+				<button id="2" className="legend-button" onClick={ legendClickHandler }>Sensor</button>
+				<button id="3" className="legend-button" onClick={ legendClickHandler }>Switch</button>
+				<button id="0" className="legend-button" onClick={ legendClickHandler }>Clear</button>
+			</div>
+
 			<div className="grid-container">
 				{tiles.map(tile => (
 					<button onClick={tileClickHandler} style={getPosition(tile)} key={tile._id} id={tile._id} className={ styleFromDrawingState (tile.type)}><span className="x">{tile.xPos}</span>, <span className="y">{tile.yPos}</span></button>
 				))}
-
-				<div className="legend-container">
-						<button id="1" onClick={ legendClickHandler }>Railway</button>
-						<button id="2" onClick={ legendClickHandler }>Sensor</button>
-						<button id="3" onClick={ legendClickHandler }>Switch</button>
-						<button id="0" onClick={ legendClickHandler }>Clear</button>
-				</div>
 			</div>
 			
 		</div>

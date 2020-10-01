@@ -61,15 +61,19 @@ export const EditGridSize = () => {
 			<h1>Edit Grid size</h1>
 			<p>Editting the grid sizes will delete your current grid, so be carefull when submitting new grid sizes.</p>
 			<form onSubmit={onSubmit}>
-				<div className="form-group">
-					<label>Width:</label>
-					<input type="text" className="form-control" id="width" value={widthV} onChange={(e) => setWidthV(e.target.value)} />
-				</div>
-				<div className="form-group">
-					<label>Height:</label>
-					<input type="text" className="form-control" id="height" value={heightV} onChange={(e) => setHeightV(e.target.value)} />
-				</div>
-				<button type="submit" className="btn btn-primary">Submit</button>
+				<table className="edit-grid-size-table">
+					<tbody>
+						<tr>
+							<td>Width:</td>
+							<td><input type="text" className="form-control" id="width" value={widthV} onChange={(e) => setWidthV(e.target.value)} /></td>
+						</tr>
+						<tr>
+							<td>Height:</td>
+							<td><input type="text" className="form-control" id="height" value={heightV} onChange={(e) => setHeightV(e.target.value)} /></td>
+						</tr>
+					</tbody>
+				</table>
+				<button type="submit" className="legend-button">Submit</button>
 			</form>
 		</div>
 	);

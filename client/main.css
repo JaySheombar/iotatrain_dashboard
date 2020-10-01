@@ -8,13 +8,28 @@ h1 {
 	margin: 10px 0px;
 }
 
-hr {
-	margin-bottom: 20px;
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
 }
 
-nav {
-	padding-bottom: 20px;
-	background-color: lightgrey;
+nav ul li {
+	float: left;
+}
+
+nav ul li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+nav ul li a:hover {
+	background-color: #111;
 }
 
 .grid-container {
@@ -37,12 +52,17 @@ nav {
 	width: 400px;
 }
 
+.legend-button {
+	padding: 10px;
+	margin-left: 5px;
+}
+
 .railway-tile {
-	background-color: lightblue;
+	background-color: lightgreen;
 }
 
 .switch-tile {
-	background-color: darkblue;
+	background-color: blueviolet;
 }
 
 .sensor-tile {
@@ -59,4 +79,20 @@ nav {
 
 .y {
 	/* visibility: hidden; */
+}
+
+.Grid {
+	padding: 20px;
+}
+
+.EditGridSize {
+	padding: 20px;
+}
+
+.edit-grid-size-table td {
+	padding: 10px;
+}
+
+.edit-grid-size-table input {
+	padding: 8px;
 }
